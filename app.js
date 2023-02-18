@@ -1,7 +1,5 @@
 addEventListener('DOMContentLoaded', () => {
-  const myLibrary = [{ author: 'Rowling', title: 'Harry Potter', pages: 255 },
-    { author: 'Rowling', title: 'Harry Potter', pages: 255 },
-    { author: 'Rowling', title: 'Harry Potter', pages: 255 }]
+  const myLibrary = []
   const grid = document.getElementById('grid-book')
   function Book (author, title, pages, checked) {
     this.author = author
@@ -9,10 +7,15 @@ addEventListener('DOMContentLoaded', () => {
     this.pages = pages
     this.checked = checked
   }
-  const clearForm = () => {
+  const remove = (index) => {
+    myLibrary.splice(index, 1)
+    while (grid.hasChildNodes()) {
+      grid.removeChild(grid.lastChild)
+    }
+    createDivs()
   }
   const createDivs = () => {
-    myLibrary.forEach((a) => {
+    myLibrary.forEach((a, index) => {
       const p1 = document.createElement('p')
       p1.innerText = a.title
       const p2 = document.createElement('p')
@@ -28,11 +31,21 @@ addEventListener('DOMContentLoaded', () => {
       checkBox.checked = a.checked
       checkBoxDiv.append(p4, checkBox)
       const div = document.createElement('div')
+      const removeButton = document.createElement('button')
+      removeButton.setAttribute('type', 'button')
+      removeButton.setAttribute('data-index', index)
+      removeButton.classList.add('removebtn')
+      removeButton.innerHTML = 'Remove Book'
+      removeButton.addEventListener('click', (e) => {
+        remove(index)
+      })
       div.classList.add('card')
-      div.append(p1, p2, p3, checkBoxDiv)
+      div.setAttribute('data-index', index)
+      div.append(p1, p2, p3, checkBoxDiv, removeButton)
       grid.append(div)
     })
   }
+
   const addButton = document.getElementById('add-button')
   addButton.addEventListener('click', () => {
     const form = document.getElementById('form')
@@ -54,7 +67,6 @@ addEventListener('DOMContentLoaded', () => {
   submitButton.addEventListener('click', function (event) {
     event.preventDefault()
     addBook()
-    clearForm()
     while (grid.hasChildNodes()) {
       grid.removeChild(grid.lastChild)
     }
