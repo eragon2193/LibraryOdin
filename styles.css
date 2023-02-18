@@ -1,0 +1,108 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+.grid-container{
+  display:grid;
+  grid-template-rows:100px, auto, 1fr;
+}
+.flex-container{
+  display:flex;
+  justify-content: center;;
+}
+.header{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size:58px;
+  height:100px;
+  padding-left:50px;
+  padding-right:50px;
+  border-bottom:20px solid black;
+  margin-bottom:10px;
+}
+.header>svg{
+  width:58px;
+}
+#grid-book{
+  border:5px solid rgba(112, 81, 23, 0.966);
+  padding:10px;
+  min-height:500px;
+  gap:50px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  width:1200px;
+  margin:50px auto;
+}
+#add-button{
+  width:200px;
+  height:100px;
+  font-size:100px;
+}
+
+#form{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto auto;
+  display:grid;
+  gap:20px;
+  padding:50px;
+  background-color:rgba(153, 60, 26, 0.971);
+  width:600px;
+  height:450px;
+  margin:auto;
+}
+form>label>input{
+  padding:5px;
+  width:100%;
+}
+label{
+  font-size:24px;
+}
+.checkbox{
+  display:Flex;
+  justify-content: space-around
+}
+.checkbox>*{
+  font-size:36px;
+}
+#checkbox{
+  width:25px;
+}
+#submit{
+  width:200px;
+  height:60px;
+  margin:auto;
+  
+}
+.hidden{
+  visibility: hidden;
+}
+.card{
+  background-color: burlywood;
+  border:3px solid black;
+  height:min-content;
+  min-height:150px;
+  max-width:400px;
+  display:grid;
+  font-size:24px;
+  text-align:center;
+}
+.card>*{
+  border-bottom:1px solid black;
+}
+.cardCheckBox>input{
+  width:20px;
+}
+.cardCheckBox{
+  display:flex;
+  justify-content: center;
+}
+.cardCheckBox>p{
+  padding:5px;
+  text-align:center;
+}
