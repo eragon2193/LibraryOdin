@@ -1,11 +1,13 @@
 addEventListener('DOMContentLoaded', () => {
   const myLibrary = []
   const grid = document.getElementById('grid-book')
-  function Book (author, title, pages, checked) {
-    this.author = author
-    this.title = title
-    this.pages = pages
-    this.checked = checked
+  class Book {
+    constructor (author, title, pages, checked) {
+      this.author = author
+      this.title = title
+      this.pages = pages
+      this.checked = checked
+    }
   }
   const remove = (index) => {
     myLibrary.splice(index, 1)
@@ -58,8 +60,10 @@ addEventListener('DOMContentLoaded', () => {
     const author = document.getElementById('author').value
     const pages = document.getElementById('pages').value
     const checked = document.getElementById('checkbox').checked
+    console.log(title)
     console.log(checked)
     const book = new Book(author, title, pages, checked)
+    console.log(book)
     myLibrary.push(book)
   }
 
